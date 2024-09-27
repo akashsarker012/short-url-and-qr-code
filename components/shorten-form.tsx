@@ -5,9 +5,25 @@ import { Button } from './ui/button'
 
 export default function ShortenForm() {
   const [url, setUrl] = useState('')
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     console.log(url)
+    try {
+      const response = await fetch('/api/shorten',{
+        method: 'POST',
+        body: JSON.stringify({url}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      await response.json()
+      setUrl('')
+    } catch (error) {
+      console.log(error)
+      
+    }finally {
+      // setUrl('')
+    }
   }
   return (
     <form onSubmit={handleSubmit} className='mb-4'>

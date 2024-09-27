@@ -1,7 +1,8 @@
 import UrlContainer from "@/components/urlContainer";
 import Image from "next/image";
-
+import prisma from "@/lib/db";
 export default function Home() {
+
   return (
     <main className="mx-auto max-w-xl px-6 py-12 md:py-24">
       <div className="space-y-6 text-center">
