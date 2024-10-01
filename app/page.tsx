@@ -1,7 +1,5 @@
 
 import UrlContainer from "@/components/urlContainer";
-import Image from "next/image";
-import prisma from "@/lib/db";
 import UrlList from "@/components/url-list";
 export default function Home() {
 
@@ -13,7 +11,7 @@ export default function Home() {
         </h1>
         <p className="md:text-xl">Shorten your urls and share then esaly</p>
         <UrlContainer />
-        <UrlList />
+       
       </div>
     </main>
   );

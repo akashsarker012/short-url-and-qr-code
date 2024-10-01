@@ -7,10 +7,22 @@ import { QRCode } from 'react-qrcode-logo';
 interface QrCodeDialogProps {
   shortUrl: string;
 }
+
 export function QrCodeDialog({ shortUrl }: QrCodeDialogProps) {
   const qrCodeRef = useRef<HTMLDivElement>(null);
-
   const shortnerUrl = `http://localhost:3000/${shortUrl}`;
+
+  const downloadQRCode = () => {
+    const canvas = qrCodeRef.current?.querySelector<HTMLCanvasElement>('canvas');
+    if (canvas) {
+      const image = canvas.toDataURL("image/png");
+      const link = document.createElement('a');
+      link.href = image;
+      link.download = `${shortUrl}-qrcode.png`; // Set the name of the downloaded file
+      link.click();
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,12 +37,12 @@ export function QrCodeDialog({ shortUrl }: QrCodeDialogProps) {
           <DialogDescription className="text-center">Scan this QR code to visit the shortened URL.</DialogDescription>
         </DialogHeader>
         <div ref={qrCodeRef}>
-          <QRCode  value={shortnerUrl} size={256} />
+          <QRCode style={{ margin: "auto" }} value={shortnerUrl} size={256} />
         </div>
-        <p className=" text-center text-sm">{shortnerUrl}</p>
-        <Button >Download QR Code</Button>
+        <p className="text-center text-sm">{shortnerUrl}</p>
+        <Button onClick={downloadQRCode}>Download QR Code</Button>
         <DialogClose asChild>
-          <Button  variant="ghost">Close</Button>
+          <Button variant="ghost">Close</Button>
         </DialogClose>
       </DialogContent>
     </Dialog>

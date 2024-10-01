@@ -1,7 +1,7 @@
 import prisma from '@/lib/db'
 import { redirect } from 'next/navigation'
-// import { redirect } from 'next/navigation'
 import React from 'react'
+import NotFound from '../not-found'
 
 interface redirectPageProps {
     params: {
@@ -16,7 +16,7 @@ export default async function redirectPage({params}: redirectPageProps) {
         where: {shortUrl: shortcode}
     })
     if(!url) {
-        return <div>Not found</div>
+        return NotFound()
     }
     await prisma.url.update({
         where: {id: url.id},
