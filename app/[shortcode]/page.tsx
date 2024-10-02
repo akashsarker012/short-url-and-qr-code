@@ -1,6 +1,5 @@
 import prisma from '@/lib/db'
 import { redirect } from 'next/navigation'
-import React from 'react'
 import NotFound from '../not-found'
 
 interface redirectPageProps {

@@ -18,7 +18,7 @@ export function QrCodeDialog({ shortUrl }: QrCodeDialogProps) {
       const image = canvas.toDataURL("image/png");
       const link = document.createElement('a');
       link.href = image;
-      link.download = `${shortUrl}-qrcode.png`; // Set the name of the downloaded file
+      link.download = `${shortUrl}-qrcode.png`;
       link.click();
     }
   };

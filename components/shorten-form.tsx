@@ -4,7 +4,7 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 
 interface ShortenFormProps {
-  onShorten: () => void; // Callback to trigger showing the UrlList
+  onShorten: () => void; 
 }
 
 export default function ShortenForm({ onShorten }: ShortenFormProps) {
@@ -22,7 +22,7 @@ export default function ShortenForm({ onShorten }: ShortenFormProps) {
       });
       await response.json();
       setUrl('');
-      onShorten(); // Show the UrlList after successful submission
+      onShorten(); 
     } catch (error) {
       console.log(error);
     }

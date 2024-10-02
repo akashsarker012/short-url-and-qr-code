@@ -1,6 +1,5 @@
 
 import UrlContainer from "@/components/urlContainer";
-import UrlList from "@/components/url-list";
 export default function Home() {
 
   return (
